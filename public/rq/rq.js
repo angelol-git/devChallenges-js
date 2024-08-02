@@ -46,7 +46,6 @@ async function fetchQuote() {
 }
 
 function showLoading(isLoading) {
-    console.log("hello");
     loadingIndicator.style.display = isLoading ? 'block' : 'none';
     newButton.disabled = isLoading ? true : false;
     newButtonImage.style.display = isLoading ? 'none' : 'block';
