@@ -4,17 +4,30 @@ const author = quoteContainer.querySelector(".rq__author");
 const category = document.getElementById("quote-category");
 const newButton = document.getElementById("new-button");
 const copyButton = document.getElementById("copy-button");
-
+const loadingIndicator = document.getElementById("loading-indicator");
+const newButtonImage = document.getElementById("new-button-image");
 newButton.addEventListener("click", handleNewButtonClick);
 
 async function handleNewButtonClick() {
-    const data = await fetchQuote();
-    author.textContent = data.author;
-    quote.textContent = data.quote;
-    category.textContent = data.category
+    showLoading(true);
+    try {
+        const data = await fetchQuote();
+        author.textContent = data.author;
+        quote.textContent = data.quote;
+        category.textContent = data.category
+    }
+    catch (error) {
+        console.log(error);
+    }
+    finally {
+        showLoading(false);
+    }
 }
 
 async function fetchQuote() {
+    //Simulate loading
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
     try {
         const response = await fetch('/quotes/random', {
             method: "GET"
@@ -28,6 +41,14 @@ async function fetchQuote() {
     }
     catch (error) {
         console.log(error);
+        return null;
     }
+}
+
+function showLoading(isLoading) {
+    console.log("hello");
+    loadingIndicator.style.display = isLoading ? 'block' : 'none';
+    newButton.disabled = isLoading ? true : false;
+    newButtonImage.style.display = isLoading ? 'none' : 'block';
 }
 

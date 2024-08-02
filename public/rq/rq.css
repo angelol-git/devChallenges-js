@@ -93,6 +93,37 @@ body {
     border-bottom-left-radius: 0px;
 }
 
+
+
+.spinner {
+    border: 3px solid var(--text-2);
+    border-left: 3px solid #ffffff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media only screen and (max-width:640px) {
     #quote-container {
         width: 100%;
