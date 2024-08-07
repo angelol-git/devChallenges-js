@@ -13,32 +13,39 @@
     <meta name="theme-color" content="#ffffff">
     <title>QR Code Generator</title>
     <link rel="stylesheet" href="./css/qr.css">
-
+    <link rel="stylesheet" href="./css/qr2.css">
     <link rel="stylesheet" href="../../main.css">
     <link rel="stylesheet" href="../../reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="utils/qrcode.min.js"></script>
 </head>
 
 <body>
     <header class="header-container">
         <a href="../../index.html" class="header-link">Home</a>
+
+    </header>
+    <header class="qr__header-container">
+        <a href="qr.html">
+            <img src="./images/logo-qr-generator.svg" alt="QR Code Logo" class="qr__form-logo qr__logo-small">
+        </a>
     </header>
     <main class="main-container">
-        <div id="form-container">
-            <form id="qr-form">
-                <img src="./images/logo-qr-generator.svg" alt="QR Code Logo" class="qr__form-logo">
-                <div class="qr__search-container">
-                    <input type="text" id="search-input" name="search-input" placeholder="Enter an url"
-                        class="qr__search-bar" required>
-                    <button id="search-button" class="qr__button" type="submit"> QR code</button>
-                </div>
-                <div id="search-error" class="qr__error">Error: Please enter a valid url.</div>
-            </form>
+        <div id="modal" class="qr__modal">Link copied</div>
+        <div id="qr__code-container">
+            <div id="qr-code"></div>
+        </div>
+
+        <div class="qr__button-container">
+            <button id="download-button" class="qr__button qr__button-2">Download <img src="./images/download.svg"
+                    alt="download icon"></button>
+            <button id="share-button" class="qr__button qr__button-2">Share <img src="./images/share.svg"
+                    alt="share icon"></button>
         </div>
     </main>
-    <script src="./js/qr.js"></script>
+    <script src="./js/qr2.js"></script>
 </body>
 
 </html>
